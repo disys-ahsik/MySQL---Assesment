@@ -1,0 +1,176 @@
+
+*******************************************************************************
+1. USE keyword is used to select a ___________
+
+ANS:
+
+ Database
+
+
+2.User() fucntion returns the current users user name and ___________
+ 
+ANS:
+
+ Host name 
+
+3. How do I find out all databases starting with ‘test‘?
+
+ANS :
+
+SHOW DATABASES LIKE ‘%test%’;
+
+4. How can we get the number of records or rows in a table?
+
+ANS :
+
+ we can use COUNT(*)
+
+5. Write an SQL query to print the FIRST_NAME from Worker table after replacing ‘a’ with ‘A’.
+
+ANS :
+
+SELECT REPLACE(FIRST_NAME,'a','A')  FROM EMPLOYEES;
+
+6. Write an SQL query to print all Worker details from the Worker table order by FIRST_NAME Ascending and DEPARTMENT Descending.
+
+ANS :
+
+select * from Workers
+ORDER BY FIRST_NAME, DEPTARTMENT DESC;
+
+7. Write an SQL query to print details of workers excluding first names, “Vipul” and “Satish” from Worker table.
+
+ANS :
+
+Select * from Worker where FIRST_NAME not in ('Vipul','Satish');
+
+8. Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‘h’ and contains six alphabets.
+
+ANS :
+
+Select * from Worker where FIRST_NAME like '______h%'; 
+
+9. Please answer the below questions using the image given
+
+ANS :  
+
+10. Write a query find number of employees whose DOB is between 02/05/1970 to 31/12/1975 and are grouped according to gender.
+
+ANS :
+
+SELECT COUNT(*)
+SELECT  Gender, DOB FROM EmployeeInfo  where DOB BETWWEN '02/05/1970' AND '31/12/1975'
+
+11. Write a query to fetch all employees who also hold the managerial position.
+
+ANS :
+
+SELECT E.EmpFname, E.EmpLname, P.EmpPosition
+
+FROM EmployeeInfo E INNER JOIN EmployeePosition P ON
+
+E.EmpID = P.EmpID AND P.EmpPosition IN ('Manager')
+
+12. Write a query to retrieve two minimum and maximum salaries from the EmployeePosition table.
+
+ANS : 
+
+Maximum salary :
+
+SELECT TOP 2 salary
+FROM EmployeePosition table
+ORDER BY salary DESC ;
+
+Minimum salary :
+
+SELECT TOP 2 salary
+FROM EmployeePosition table
+ORDER BY salary ASC ;
+
+13. Write a query to insert new data in Table EmployeeInfo.
+
+ANS :
+ 
+INSERT INTO EmployeeInfo
+VALUES ('1', 'Ashik',' S', 'HR','P1','Hyderabad(HYD)','19/11/2001';
+
+
+14. Write a query to delete a column from EmployeePosition table where employee position is equal to Lead.
+
+ANS : delete from EmployeePosition where EmpPosition = 'Lead';
+
+15. Write query for FULL OUTER JOIN
+
+ANS :
+
+SELECT 
+  d.date, 
+  i.name, 
+  i.is_veg, 
+  d.price, 
+  d.units_sold 
+FROM daily_menu d 
+     FULL OUTER JOIN menu_items i 
+     ON d.item_id = i.item_id 
+
+16. Write query for RIGHT JOIN 
+
+ANS :
+
+SELECT 
+  d.date, 
+  i.name, 
+  i.is_veg, 
+  d.price, 
+  d.units_sold 
+FROM daily_menu d 
+     RIGHT JOIN menu_items i 
+     ON d.item_id = i.item_id 
+
+17. Write an SQL query to find the maximum, minimum, and average salary of the employees.
+
+ANS :
+
+select max(salary), avg(salary), min(salary) from EmployeeSalary
+
+
+18. Write an SQL query to fetch the EmpIds that are present in both the tables – ‘EmployeeDetails’ and ‘EmployeeSalary.
+
+ANS:
+
+SELECT EmpId FROM EmployeeDetails
+UNION 
+SELECT EmpId FROM EmployeeSalary;
+
+19. Write an SQL query to find the count of the total occurrences of a particular character – ‘n’ in the FullName field.
+
+ANS : 
+
+SELECT FullName, 
+LENGTH(FullName) - LENGTH(REPLACE(FullName, 'n', ''))
+FROM EmployeeDetails;
+
+
+20. Write an SQL query to fetch employee names having a salary greater than or equal to 5000 and less than or equal to 10000.
+
+ANS : SELECT EmpName, Salary From Employee WHERE Salary >= 5000 AND Salary <= 10000
+
+
+21. Write an SQL query to fetch project-wise count of employees sorted by project’s count in descending order.
+ANS :
+
+SELECT Project, count(EmpId) EmpProjectCount
+FROM EmployeeSalary
+GROUP BY Project
+ORDER BY EmpProjectCount DESC;
+
+22. Write an SQL query to fetch duplicate records from EmployeeDetails (without considering the primary key – EmpId).
+
+ANS :
+
+SELECT FullName, ManagerId, DateOfJoining, City, COUNT(*)
+FROM EmployeeDetails
+GROUP BY FullName, ManagerId, DateOfJoining, City
+HAVING COUNT(*) > 1;
+
+
